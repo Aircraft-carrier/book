@@ -1,0 +1,21 @@
+### GET request with a header
+GET http://127.0.0.1:5000/books/5
+Accept: application/json
+
+### Send POST request with json body
+POST http://127.0.0.1:5000/books
+Content-Type: application/json
+
+   {
+      "author": "刘慈欣",
+      "book_name": "流浪地球",
+      "book_number": "026",
+      "book_prize": 25.6,
+      "book_publisher": "深圳出版社",
+      "book_type": "科幻"
+    }
+
+
+### GET request with a header
+GET http://127.0.0.1:5000/books
+Accept: application/json
