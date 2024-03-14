@@ -115,7 +115,7 @@ import {ElMessageBox} from 'element-plus'
 
 const books = reactive([])
 const getStudents = () => {
-  axios.get("http://localhost:5000/books",).then(res => {
+  axios.get("http://localhost:5000/api/books",).then(res => {
     books.splice(0, books.length)
     books.push(...res.data.results)
     console.log('更新数据')
@@ -128,7 +128,7 @@ onMounted(() => {
 
 // 删除数据
 const handleDelete = (index, scope) => {
-  axios.delete(`http://localhost:5000/books/${scope.id}`).then(() => {
+  axios.delete(`http://localhost:5000/api/books/${scope.id}`).then(() => {
     getStudents()
   })
 }
@@ -148,7 +148,7 @@ const book_form = reactive({
 })
 // 表单提交事件
 const submitForm = (formEl) => {
-  axios.post('http://localhost:5000/books', book_form).then(() => {
+  axios.post('http://localhost:5000/api/books', book_form).then(() => {
     add_dialog_visible.value = false
     formEl.resetFields()
     getStudents()
@@ -180,7 +180,7 @@ const handleEdit = (index, scope) => {
 }
 // 编辑提交按钮
 const submitEditForm = (formEl) => {
-  axios.put(`http://localhost:5000/books/${book_form.id}`, book_form).then((res) => {
+  axios.put(`http://localhost:5000/api/books/${book_form.id}`, book_form).then((res) => {
     formEl.resetFields()
     edit_dialog_visible.value = false
     getStudents()
